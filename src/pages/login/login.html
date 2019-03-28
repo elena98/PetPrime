@@ -1,0 +1,35 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>PetPrime</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <ion-label color="primary">Bienvenido</ion-label>
+    <ion-label color="primary">Inicia sesion y si no tienes una cuentas registrate</ion-label>
+
+  <ion-item>
+    <ion-label color="primary" stacked>Email</ion-label>
+    <ion-input type="text" [(ngModel)]="user.email" placeholder="Email input"></ion-input>
+
+  </ion-item>
+   
+  <ion-item>
+    <ion-label color="primary" stacked>Contaseña</ion-label>
+    <ion-input type="password" [(ngModel)]="user.password" placeholder="Name input"></ion-input>
+  </ion-item>
+    
+  <p>
+    <button ion-button color="secondary" block item-end (click)="login(user)">Ingresar</button>
+  </p>       
+  <p>
+      <button ion-button color="dark" block item-end (click)="registro(user)">Registro</button>
+    </p> 
+    <p>
+        <button ion-button color="dark" block item-end (click)="rest(user.email)">Olvide mi contraseña</button>
+      </p>  
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Ionic Menu Starter</h3>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Titulo</ion-label>
+      <ion-input Type="text" [(ngModel)]="note.title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Descripcion</ion-label>
+      <ion-input Type="text" [(ngModel)]="note.descripcion"></ion-input>
+      
+      
+
+
+    </ion-item>
+
+    
+  </ion-list>
+  <button *ngIf="id ==0"ion-button color="dark" block  (click)="addNote()">Guardar Registro</button>
+
+  <button *ngIf="id !=0" ion-button secondary menuToggle block>Toggle Menu</button>
+</ion-content>
