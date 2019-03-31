@@ -5,20 +5,22 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Detalle</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Citas</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-<ion-list>
-  <ion-item>
-  
-  </ion-item>
-  <button ion-button block>Guardar Registro</button>
-</ion-list>
+  <ion-list>
+    <button ion-item *ngFor="let note of notes">
+      {{ note.title }} dia :
+  {{ note.proxima }}
+    </button>
+
+  </ion-list>
 
 </ion-content>

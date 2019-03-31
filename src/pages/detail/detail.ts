@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+
+
+import {  ViewChild } from '@angular/core';
+
+import { NotesService } from '../../services/notes.service';
+
+import { RegistroPage } from '../registro/registro';
+
 /**
  * Generated class for the DetailPage page.
  *
@@ -13,8 +21,14 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'detail.html',
 })
 export class DetailPage {
+  notes = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  @ViewChild('myNav') nav: NavController;
+  constructor(public navCtrl: NavController, public navParams: NavParams,  public notesService : NotesService) {
+    this.notesService.getNotes().subscribe(notas=> {
+      this.notes=notas;
+  });
+   
   }
 
   ionViewDidLoad() {

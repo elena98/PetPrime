@@ -17,17 +17,27 @@
     </ion-item>
 
     <ion-item>
-      <ion-label floating>Descripcion</ion-label>
-      <ion-input Type="text" [(ngModel)]="note.descripcion"></ion-input>
-      
-      
-
-
+      <ion-label floating>Fecha de tratamiento</ion-label>
+      <ion-input Type="text" [(ngModel)]="note.fecha"></ion-input>
     </ion-item>
 
+    <ion-item>
+      <ion-label floating>Doctor</ion-label>
+      <ion-input Type="text" [(ngModel)]="note.Doctor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Veterinaria</ion-label>
+      <ion-input Type="text" [(ngModel)]="note.vet"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Proxima cita para tratamient</ion-label>
+      <ion-input *ngIf="id ==0" Type="text" [(ngModel)]="note.proxima"></ion-input>
+    </ion-item>
     
   </ion-list>
   <button *ngIf="id ==0"ion-button color="dark" block  (click)="addNote()">Guardar Registro</button>
+  <button ion-button color="dark" block  (click)="addNote()">Registro</button>
+  <button ion-button color="dark" block  (click)="eliminar()">eliminar Registro</button>
 
   <button *ngIf="id !=0" ion-button secondary menuToggle block>Toggle Menu</button>
 </ion-content>
