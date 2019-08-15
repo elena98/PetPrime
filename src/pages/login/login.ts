@@ -3,6 +3,10 @@ import { NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import * as firebase from "firebase";
 import { AlertController } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { NotesService } from '../../services/notes.service';
+
+
 
 /**
  * Generated class for the LoginPage page.
@@ -16,13 +20,20 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+
+  public datos;
+ // rol='empleado';
  user={
   email:"",
-  password:""
+  password:"",
+  rol:'empleado'
  };
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alert: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alert: AlertController,public notesSservice: NotesService) {
+
+  
+  
   }
 
   login(user){
@@ -33,14 +44,15 @@ export class LoginPage {
           subTitle: 'Error al iniciar sesion ',
           buttons: ['Aceptar']
         });
-        alert.present();
-        
+        alert.present();   
 
       }
+      
       else{
         this.navCtrl.push(HomePage);
 
       }
+      //this.notesSservice.createuser(this.user);
 
     });
   }
@@ -52,11 +64,34 @@ export class LoginPage {
       subTitle: 'Ha Registrado correctamente ',
       buttons: ['Aceptar']
     });
+
+
     alert.present();
 
 
   });
- }
+ }    
+ 
+ guardarDato(user) {
+      var usuario={
+        rol:user.rol,
+        email:user.email,
+        password:user.password
+      }
+      this.registro(usuario);
+      firebase.database().ref('/usuarios' ).push(usuario).then(data=>{
+        let alert = this.alert.create({
+          title: 'Correcto',
+          subTitle: 'Ha Registrado correctamente ',
+          buttons: ['Aceptar']
+        });
+    
+
+        alert.present();
+    
+      })
+
+    }
 
  rest(email){
   firebase.auth().sendPasswordResetEmail(email).then(function() {

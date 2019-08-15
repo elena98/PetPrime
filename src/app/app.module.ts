@@ -12,10 +12,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NotesService } from '../services/notes.service';
 import { DetailPage } from '../pages/detail/detail';
+import { CortesPage } from '../pages/cortes/cortes';
 import {AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {AngularFirestoreModule } from 'angularfire2/firestore';
+
+import { VideoPlayer } from '@ionic-native/video-player';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyC_vyH1dFKh8wSXB1YDAh2NyJyk4IMiMXw",
@@ -35,7 +38,8 @@ export const firebaseConfig = {
     ListPage,
     LoginPage,
     RegistroPage,
-    DetailPage
+    DetailPage,
+    CortesPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireModule,
-    AngularFirestoreModule
+    AngularFirestoreModule 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,13 +56,15 @@ export const firebaseConfig = {
     ListPage,
     LoginPage,
     RegistroPage,
-    DetailPage
+    DetailPage,
+    CortesPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     NotesService
+   
 
   ]
 })

@@ -19,6 +19,7 @@ export class ListPage {
   }
 
   public goToDetail(id){
+    console.log("este es el id " ,id)
     this.navCtrl.push(RegistroPage, {id:id});
   }
 

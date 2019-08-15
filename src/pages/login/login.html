@@ -1,35 +1,40 @@
 
 <ion-header>
+  <br>
+  <br>
 
-  <ion-navbar>
-    <ion-title>PetPrime</ion-title>
-  </ion-navbar>
+
 
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="bg" class = " no-scroll ">
 
-    <ion-label color="primary">Bienvenido</ion-label>
-    <ion-label color="primary">Inicia sesion y si no tienes una cuentas registrate</ion-label>
+    <h2 class="center"> Bienvenido a su Pyme </h2>
 
-  <ion-item>
-    <ion-label color="primary" stacked>Email</ion-label>
-    <ion-input type="text" [(ngModel)]="user.email" placeholder="Email input"></ion-input>
+     <p  class="center"><img src='../assets/imgs/lol.png' width="130px" ></p>
+  
+       
+    
+    <p color="b">Inicia sesion y si no tienes una cuentas registrate</p>
+
+  <ion-item >
+    <ion-label color="dark" stacked>Email</ion-label>
+    <ion-input type="text" [(ngModel)]="user.email" placeholder="Email " ></ion-input>
 
   </ion-item>
    
-  <ion-item>
-    <ion-label color="primary" stacked>Contaseña</ion-label>
-    <ion-input type="password" [(ngModel)]="user.password" placeholder="Name input"></ion-input>
+  <ion-item >
+    <ion-label color="dark" stacked>Contaseña</ion-label>
+    <ion-input type="password" [(ngModel)]="user.password" placeholder="Contraseña"></ion-input>
   </ion-item>
     
   <p>
-    <button ion-button color="secondary" block item-end (click)="login(user)">Ingresar</button>
+    <button ion-button color="r" block item-end (click)="login(user)">Ingresar</button>
   </p>       
   <p>
-      <button ion-button color="dark" block item-end (click)="registro(user)">Registro</button>
+      <button ion-button color="v1" block item-end (click)="guardarDato(user)">Registro</button>
     </p> 
     <p>
-        <button ion-button color="dark" block item-end (click)="rest(user.email)">Olvide mi contraseña</button>
+        <button ion-button block clear id="textContra" block item-end (click)="rest(user.email)">Olvide mi contraseña</button>
       </p>  
 </ion-content>
