@@ -28,14 +28,8 @@ export class NotesService{
           //this.notes.push(note);
           this.afDB.database.ref('productos/' +note.id).set(note);
       }
-
-      
+ 
       public editNote(note){
-     /*  for(let i ; i< this.notes,length; i++){
-           if(this.notes[i]== note){
-               this.notes[i] = note;
-            }
-         }*/
          
        this.afDB.database.ref('productos/'+ note.id).set(note);
        console.log(note);
@@ -69,4 +63,33 @@ export class NotesService{
         });
       });
     }
+
+
+    //se programan los registros de los proveedores
+
+    
+    public createproveedor(note){
+        //this.notes.push(note);
+        this.afDB.database.ref('proveedores/' +note.id).set(note);
+    }
+
+    public deleteProveedor(note){
+        console.log(note);
+
+        // this.afDB.database.ref('cartilla/' +note.id).remove();
+      this.afDB.list("proveedores/"+note.id ).remove();
+
+
+    }
+
+    public getProveedor(){
+        return this.afDB.list("proveedores/").valueChanges();
+      
+        
+       // return this.notes;
+    }
+
+    
+
+
 }

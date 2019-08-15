@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NotesService } from '../../services/notes.service';
 import  firebase  from 'firebase';
 
 /**
- * Generated class for the RegistroPage page.
+ * Generated class for the DetailproPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
+@IonicPage()
 @Component({
-  selector: 'page-registro',
-  templateUrl: 'registro.html',
+  selector: 'page-detailpro',
+  templateUrl: 'detailpro.html',
 })
-export class RegistroPage {
-  note={id:null,producto:null,proveedor:null,cantidad:null,minimo:null,precio:null,foto:null};
+export class DetailproPage {
+  note={id:null,proveedor:null,email:null,numero:null};
  
   id=null;
 
@@ -28,25 +29,18 @@ export class RegistroPage {
       this.note= note;
      });
 */
-    firebase.database().ref('/productos/'+ this.id).once('value').then(snapshot => {
-      var producto = (snapshot.val()&& snapshot.val().producto)|| 'no encontro ';
+    firebase.database().ref('/proveedores/'+ this.id).once('value').then(snapshot => {
       var proveedor = (snapshot.val()&& snapshot.val().proveedor)|| 'no encontro ';
-      var cantidad = (snapshot.val()&& snapshot.val().cantidad)|| 'no encontro ';
-      var minimo = (snapshot.val()&& snapshot.val().minimo)|| 'no encontro ';
-      var precio = (snapshot.val()&& snapshot.val().precio)|| 'no encontro ';
-      var foto = (snapshot.val()&& snapshot.val().foto)|| 'no encontro ';
+      var email = (snapshot.val()&& snapshot.val().email)|| 'no encontro ';
+      var numero = (snapshot.val()&& snapshot.val().numero)|| 'no encontro ';
       var id = (snapshot.val()&& snapshot.val().id)|| 'no encontro ';
       console.log(id);
-      this.note.producto=producto;
-      console.log(producto);
       this.note.proveedor=proveedor;
       console.log(proveedor);
-      this.note.cantidad=cantidad;
-      console.log(cantidad);
-      this.note.minimo=minimo;
-      console.log(minimo);
-      this.note.precio=precio;
-      this.note.foto=foto;
+      this.note.email=email;
+      console.log(email);
+      this.note.numero=numero;
+      console.log(numero);
       this.note.id=id;
       console.log("ethel punto is  "+id);
     
@@ -66,15 +60,15 @@ export class RegistroPage {
   addNote(){
     if(this.id ==0){
       this.note.id = Date.now();
-      this.notesSservice.createNote(this.note);
-      alert('Informacion guardada');
+      this.notesSservice.createproveedor(this.note);
+      alert('Proveedor guardado');
       
     }
     this.navCtrl.pop();
 
   }
   eliminar(id){
-    this.notesSservice.deleteNote(this.note);
+    this.notesSservice.deleteProveedor(this.note);
     alert('Informacion Eliminada');
     this.navCtrl.pop();
   }
@@ -83,13 +77,13 @@ export class RegistroPage {
     
     var pul=1;
     if(pul==1){     
-    this.notesSservice.deleteNote(this.note);
+    this.notesSservice.deleteProveedor(this.note);
     pul=0;
        
     }
     if(pul==0){
       this.note.id = Date.now();
-      this.notesSservice.createNote(this.note);
+      this.notesSservice.createproveedor(this.note);
      
       alert('Informacion guardada');
       this.navCtrl.pop();

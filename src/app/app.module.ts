@@ -19,6 +19,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import {AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { VideoPlayer } from '@ionic-native/video-player';
+import { ProveedoresPage } from '../pages/proveedores/proveedores';
+import { DetailproPage } from '../pages/detailpro/detailpro';
+import { CatalogoPage } from '../pages/catalogo/catalogo';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyC_vyH1dFKh8wSXB1YDAh2NyJyk4IMiMXw",
@@ -39,7 +42,10 @@ export const firebaseConfig = {
     LoginPage,
     RegistroPage,
     DetailPage,
-    CortesPage
+    CortesPage,
+    ProveedoresPage,
+    DetailproPage,
+    CatalogoPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +63,10 @@ export const firebaseConfig = {
     LoginPage,
     RegistroPage,
     DetailPage,
-    CortesPage
+    CortesPage,
+    ProveedoresPage,
+    DetailproPage,
+    CatalogoPage
   ],
   providers: [
     StatusBar,

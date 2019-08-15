@@ -7,11 +7,15 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class = " no-scroll ">
+<ion-content >
   <ion-list>
     <button ion-item *ngFor="let note of notes" (click)="goToDetail(note.id)">
-      <h4>Producto : {{ note.producto }}</h4>
-      <p>Proveedor: {{ note.proveedor}}</p>
+      <h4>Producto : {{ note.producto }} </h4>
+      <h3> <a id="texta">$ $ </a>{{note.precio}} </h3>
+      <p>Proveedor: {{ note.proveedor}} </p>
+    
+     <img src= {{note.foto}} width="100px">
+     <br>
 
     </button>
 

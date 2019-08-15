@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar color ="v1">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Home</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding padding  class = " no-scroll ">
+    <h3>Proveedores </h3>
+    <ion-list>
+  
+      <ion-item>
+        <ion-label floating>Nombre de proveedor</ion-label>
+        <ion-input Type="text" [(ngModel)]="note.proveedor"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>E-mail</ion-label>
+        <ion-input type="email" [(ngModel)]="note.email"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>Numero</ion-label>
+        <ion-input Type="number" [(ngModel)]="note.numero"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-item >
+    <button *ngIf="id ==0"ion-button color="v1" block  (click)="addNote()">Guardar Registro</button>
+    <button *ngIf="id !==0" ion-button color="v1" block  (click)="edit()">Actualizar</button>
+    <button *ngIf="id !==0" ion-button color="danger" block  (click)="eliminar()">eliminar Registro</button>
+  
+    <button *ngIf="id ==6" ion-button secondary menuToggle block>Toggle Menu</button>
+  
+    </ion-item>
+  
+  </ion-content>
