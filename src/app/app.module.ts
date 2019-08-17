@@ -22,6 +22,8 @@ import { VideoPlayer } from '@ionic-native/video-player';
 import { ProveedoresPage } from '../pages/proveedores/proveedores';
 import { DetailproPage } from '../pages/detailpro/detailpro';
 import { CatalogoPage } from '../pages/catalogo/catalogo';
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyC_vyH1dFKh8wSXB1YDAh2NyJyk4IMiMXw",
@@ -53,7 +55,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireModule,
-    AngularFirestoreModule 
+    AngularFirestoreModule ,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -66,13 +69,17 @@ export const firebaseConfig = {
     CortesPage,
     ProveedoresPage,
     DetailproPage,
-    CatalogoPage
+    CatalogoPage,
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    NotesService
+    {provide: ErrorHandler, useClass: IonicErrorHandler,},
+    NotesService,
+    
+
+    
    
 
   ]

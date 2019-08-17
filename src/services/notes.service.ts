@@ -5,6 +5,8 @@ import firebase from 'firebase';
 @Injectable()
 export class NotesService{
 
+    private cart=[];
+
     constructor(public afDB: AngularFireDatabase){
 
     }
@@ -87,6 +89,22 @@ export class NotesService{
       
         
        // return this.notes;
+    }
+
+    public addproductos(notes){
+        this.cart.push(notes);
+    }
+
+    
+    public getPC(){
+        return this.afDB.list("proveedores/").valueChanges();
+
+    }
+
+        
+    public RetPC(){
+        return this.cart;
+
     }
 
     

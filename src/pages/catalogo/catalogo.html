@@ -4,8 +4,33 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-title>Catalogo</ion-title>
+      <button ion-buttons slot="end">
+        <button ion-button (click)="penCart()" >
+          <ion-icon name="cart" slot="icon-only"></ion-icon>
+        </button>
+      </button>
+
+
     </ion-navbar>
   </ion-header>
 <ion-content padding>
+    <ion-list ion-item *ngFor="let note of notes" (click)="goToDetail(note.id)">
+        
+          <h4>Producto : {{ note.producto }} </h4>
+          <h3> <a id="texta">$ $ </a>{{note.precio}} </h3>
+          <p>Proveedor: {{ note.proveedor}} </p>
+        
+         <img src= {{note.foto}} width="100px">
+
+         <br>
+         <ion-item  >
+            <button ion-button small color="secondary" (click)="vender(note)">Vender</button>
+          </ion-item>
+         <br>
+ 
+    
+      </ion-list>
+ 
+
 
 </ion-content>

@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import * as firebase from 'Firebase';
+import { NotesService } from '../../services/notes.service';
+import { CartPage } from '../cart/cart';
 
 /**
  * Generated class for the CatalogoPage page.
@@ -14,12 +17,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'catalogo.html',
 })
 export class CatalogoPage {
+  notes = [];
+  cart= [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  @ViewChild('myNav') nav: NavController;
+  constructor(public navCtrl: NavController, public navParams: NavParams,  public notesService : NotesService) {
+    this.notesService.getNotes().subscribe(notas=> {
+      this.notes=notas;
+  });
+   
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CatalogoPage');
+  public goToDetail(id){
+    console.log("este es el id " ,id)
+
   }
+  public vender (note){
+
+    this.notesService.addproductos(note);
+
+
+
+
+
+  }
+
+  public createNote(){
+
+  }
+
 
 }
