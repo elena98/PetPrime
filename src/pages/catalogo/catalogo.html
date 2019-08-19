@@ -3,34 +3,46 @@
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>Catalogo</ion-title>
-      <button ion-buttons slot="end">
-        <button ion-button (click)="penCart()" >
-          <ion-icon name="cart" slot="icon-only"></ion-icon>
+      <ion-toolbar>
+        <ion-title>
+          Ionic Shopping
+        </ion-title>
+        <button ion-button slot="end">
+          <button ion-button (click)="openCart()">
+            <ion-badge *ngIf = "cart.length > 0">{{cart.length}}</ion-badge>
+            <ion-icon slot="icon-only" name="cart"></ion-icon>
+          </button>
         </button>
-      </button>
+      </ion-toolbar>
+    
 
 
     </ion-navbar>
   </ion-header>
 <ion-content padding>
-    <ion-list ion-item *ngFor="let note of notes" (click)="goToDetail(note.id)">
-        
-          <h4>Producto : {{ note.producto }} </h4>
-          <h3> <a id="texta">$ $ </a>{{note.precio}} </h3>
-          <p>Proveedor: {{ note.proveedor}} </p>
-        
-         <img src= {{note.foto}} width="100px">
+ 
+    <ion-slides >
+      <ion-slide *ngFor="let note of notes">
+        <div>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                {{ note.producto }} - ${{ note.precio }}
+              </ion-card-title>
+              <ion-card-content>
+                <img src= {{note.foto}} width="100px">
+                <button ion-button expand="full" (click)="addtocart(note)">Add to Cart</button>
+              </ion-card-content>
+            </ion-card-header>
+          </ion-card>
+        </div>
+      </ion-slide>
+    </ion-slides>
+ 
 
-         <br>
-         <ion-item  >
-            <button ion-button small color="secondary" (click)="vender(note)">Vender</button>
-          </ion-item>
-         <br>
- 
-    
-      </ion-list>
- 
 
 
 </ion-content>
+
+
+

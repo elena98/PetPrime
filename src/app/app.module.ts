@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { File } from '@ionic-native/file/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -22,8 +24,9 @@ import { VideoPlayer } from '@ionic-native/video-player';
 import { ProveedoresPage } from '../pages/proveedores/proveedores';
 import { DetailproPage } from '../pages/detailpro/detailpro';
 import { CatalogoPage } from '../pages/catalogo/catalogo';
-import { File } from '@ionic-native/file';
-import { FileOpener } from '@ionic-native/file-opener';
+import { CartPage } from '../pages/cart/cart';
+import { DescripcionvPage } from '../pages/descripcionv/descripcionv';
+//import { Router } from '@angular/router';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyC_vyH1dFKh8wSXB1YDAh2NyJyk4IMiMXw",
@@ -47,7 +50,9 @@ export const firebaseConfig = {
     CortesPage,
     ProveedoresPage,
     DetailproPage,
-    CatalogoPage
+    CatalogoPage,
+    CartPage,
+    DescripcionvPage
   ],
   imports: [
     BrowserModule,
@@ -70,11 +75,15 @@ export const firebaseConfig = {
     ProveedoresPage,
     DetailproPage,
     CatalogoPage,
+    CartPage,
+    DescripcionvPage
     
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    File,
+    FileOpener,
     {provide: ErrorHandler, useClass: IonicErrorHandler,},
     NotesService,
     

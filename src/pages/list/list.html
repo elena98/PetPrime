@@ -11,10 +11,11 @@
   <ion-list>
     <button ion-item *ngFor="let note of notes" (click)="goToDetail(note.id)">
       <h4>Producto : {{ note.producto }} </h4>
-      <h3> <a id="texta">$ $ </a>{{note.precio}} </h3>
+      <h3> <a id="texta">Precio $ </a>{{note.precio}} </h3>
       <p>Proveedor: {{ note.proveedor}} </p>
     
      <img src= {{note.foto}} width="100px">
+     <h5>{{ note.fecha}}</h5>
 
     
      <br>

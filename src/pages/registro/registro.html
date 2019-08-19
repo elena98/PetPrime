@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding padding  class = " no-scroll ">
+<ion-content padding padding  >
 
   <ion-list>
 
@@ -40,6 +40,13 @@
         <ion-label floating>Foto</ion-label>
         <ion-input Type="text" [(ngModel)]="note.foto"></ion-input>
       </ion-item>
+
+      <ion-label>
+        {{currentDate}}
+      </ion-label>
+      <ion-label>
+        {{fecha}}
+      </ion-label>
   </ion-list>
   <ion-item >
   <button *ngIf="id ==0"ion-button color="v1" block  (click)="addNote()">Guardar Registro</button>

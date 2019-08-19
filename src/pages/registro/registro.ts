@@ -15,13 +15,21 @@ import  firebase  from 'firebase';
   templateUrl: 'registro.html',
 })
 export class RegistroPage {
-  note={id:null,producto:null,proveedor:null,cantidad:null,minimo:null,precio:null,foto:null};
+  currentDate;
+  formattedDate;
+  note={id:null,producto:null,proveedor:null,cantidad:null,minimo:null,precio:null,foto:null, fecha:null};
  
   id=null;
+  cantidad=null;
+  minimo=null;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public notesSservice: NotesService) {
 
+    this.currentDate= new Date();
+    this.getFormattedDate()
     this.id = navParams.get('id');
+    this.cantidad= navParams.get('cantidad');
+    this.minimo=navParams.get('minimo');
     if (this.id != 0){
      // this.note=notesSservice.getNote(this.id);
    /*  notesSservice.getNote(this.id).subscribe(note => {
@@ -35,6 +43,7 @@ export class RegistroPage {
       var minimo = (snapshot.val()&& snapshot.val().minimo)|| 'no encontro ';
       var precio = (snapshot.val()&& snapshot.val().precio)|| 'no encontro ';
       var foto = (snapshot.val()&& snapshot.val().foto)|| 'no encontro ';
+      var fecha = (snapshot.val()&& snapshot.val().fecha)|| 'no encontro ';
       var id = (snapshot.val()&& snapshot.val().id)|| 'no encontro ';
       console.log(id);
       this.note.producto=producto;
@@ -48,6 +57,8 @@ export class RegistroPage {
       this.note.precio=precio;
       this.note.foto=foto;
       this.note.id=id;
+
+      this.note.fecha=fecha;
       console.log("ethel punto is  "+id);
     
     
@@ -63,9 +74,20 @@ export class RegistroPage {
     console.log('ionViewDidLoad RegistroPage');
   }
 
+  getFormattedDate(){
+    var dateObj= new Date()
+    var year = dateObj.getFullYear().toString()
+    var month= dateObj.getMonth().toString()
+    var date = dateObj.getDate().toString()
+    this.formattedDate= year+'-'+month+'-'+date;
+  }
+
+
+
   addNote(){
     if(this.id ==0){
       this.note.id = Date.now();
+      this.note.fecha= this.formattedDate;
       this.notesSservice.createNote(this.note);
       alert('Informacion guardada');
       
@@ -89,6 +111,7 @@ export class RegistroPage {
     }
     if(pul==0){
       this.note.id = Date.now();
+      this.note.fecha= this.formattedDate;
       this.notesSservice.createNote(this.note);
      
       alert('Informacion guardada');

@@ -17,5 +17,45 @@
 
 
 <ion-content padding>
+ 
+  <ion-item>
+    <ion-label stacked>From</ion-label>
+    <ion-input [(ngModel)]="letterObj.from"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>To</ion-label>
+    <ion-input [(ngModel)]="letterObj.to"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Text</ion-label>
+    <ion-textarea [(ngModel)]="letterObj.text" rows="10"></ion-textarea>
+  </ion-item>
 
+  <ion-list ion-item *ngFor="let note of notes" (click)="goToDetail(note.id)">
+
+  <ion-item>
+      <ion-label floating>Nombre de producto</ion-label>
+      <ion-input Type="text" [(ngModel)]="note.producto"></ion-input>
+    </ion-item>
+
+    
+    <ion-item>
+        <ion-label floating>Precio $$</ion-label>
+        <ion-input type="number" [(ngModel)]="note.precio"></ion-input>
+      </ion-item>
+
+
+    <ion-item>
+      <ion-label floating>Proveedor</ion-label>
+      <ion-input type="text" [(ngModel)]="note.fecha"></ion-input>
+    </ion-item>
+  </ion-list>
+
+
+
+
+ 
+  <button ion-button full (click)="createPdf()">Create PDF</button>
+  <button ion-button full (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Download PDF</button>
+ 
 </ion-content>

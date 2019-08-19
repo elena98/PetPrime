@@ -6,14 +6,17 @@ import firebase from 'firebase';
 export class NotesService{
 
     private cart=[];
+    private data=[];
 
     constructor(public afDB: AngularFireDatabase){
 
     }
 
     notes = [];
+   
 
       public getNotes(){
+          //console.log(this.afDB.list("productos/").valueChanges())
           return this.afDB.list("productos/").valueChanges();
         
           
@@ -95,17 +98,39 @@ export class NotesService{
         this.cart.push(notes);
     }
 
-    
-    public getPC(){
-        return this.afDB.list("proveedores/").valueChanges();
+
+    public createventa(note){
+
+        this.afDB.database.ref('ventas/venta' +note.id).set(note)
 
     }
+    public getEstadistica(){
+        return this.afDB.list("estadistica/").valueChanges();
+    
+    }
+
+    public get(){
+        return this.afDB.list("estadistica/").valueChanges();
+    
+    }
+
+    getCart() {
+        return this.cart;
+      }
+     
+      addProduct(product) {
+        this.cart.push(product);
+      }
+
+      
+      public getProduct(){
+        //console.log(this.afDB.list("productos/").valueChanges())
+        return this.afDB.list("productos/").valueChanges();
 
         
-    public RetPC(){
-        return this.cart;
-
+       // return this.notes;
     }
+
 
     
 
