@@ -5,6 +5,7 @@ import * as firebase from "firebase";
 import { AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { NotesService } from '../../services/notes.service';
+import { VentanaPage } from '../ventana/ventana';
 
 
 
@@ -49,7 +50,7 @@ export class LoginPage {
       }
       
       else{
-        this.navCtrl.push(HomePage);
+        this.navCtrl.push(VentanaPage);
 
       }
       //this.notesSservice.createuser(this.user);

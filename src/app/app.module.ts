@@ -26,6 +26,8 @@ import { DetailproPage } from '../pages/detailpro/detailpro';
 import { CatalogoPage } from '../pages/catalogo/catalogo';
 import { CartPage } from '../pages/cart/cart';
 import { DescripcionvPage } from '../pages/descripcionv/descripcionv';
+import { VendedorPage } from '../pages/vendedor/vendedor';
+import { VentanaPage } from '../pages/ventana/ventana';
 //import { Router } from '@angular/router';
 
 export const firebaseConfig = {
@@ -52,7 +54,9 @@ export const firebaseConfig = {
     DetailproPage,
     CatalogoPage,
     CartPage,
-    DescripcionvPage
+    DescripcionvPage,
+    VendedorPage,
+    VentanaPage
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,9 @@ export const firebaseConfig = {
     DetailproPage,
     CatalogoPage,
     CartPage,
-    DescripcionvPage
+    DescripcionvPage,
+    VendedorPage,
+    VentanaPage
     
   ],
   providers: [

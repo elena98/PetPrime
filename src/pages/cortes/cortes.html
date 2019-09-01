@@ -31,27 +31,7 @@
     <ion-textarea [(ngModel)]="letterObj.text" rows="10"></ion-textarea>
   </ion-item>
 
-  <ion-list ion-item *ngFor="let note of notes" (click)="goToDetail(note.id)">
-
-  <ion-item>
-      <ion-label floating>Nombre de producto</ion-label>
-      <ion-input Type="text" [(ngModel)]="note.producto"></ion-input>
-    </ion-item>
-
-    
-    <ion-item>
-        <ion-label floating>Precio $$</ion-label>
-        <ion-input type="number" [(ngModel)]="note.precio"></ion-input>
-      </ion-item>
-
-
-    <ion-item>
-      <ion-label floating>Proveedor</ion-label>
-      <ion-input type="text" [(ngModel)]="note.fecha"></ion-input>
-    </ion-item>
-  </ion-list>
-
-
+   
 
 
  

@@ -26,35 +26,21 @@ export class CortesPage {
   note={id:null,producto:null,cantidad:null};
  
   letterObj = {
-    to: '',
-    from: '',
+    to: 'Este documento es elreporte de las ventas que se tubieron de los productos..',
+    from: 'MYPYME',
     text: '',
-    notes:[]
   }
   id=null;
 
 
  
   pdfObj = null;
+  content=[];
+  notes=[];
  
-  constructor(public navCtrl: NavController, private plt: Platform, private file: File, private fileOpener: FileOpener,  public notesService : NotesService) { 
-    
-
-  firebase.database().ref('/estadistica/'+ this.id).once('value').then(snapshot => {
-    var producto = (snapshot.val()&& snapshot.val().producto)|| 'no encontro ';
-    var cantidad = (snapshot.val()&& snapshot.val().cantidad)|| 'no encontro ';
-    var id = (snapshot.val()&& snapshot.val().id)|| 'no encontro ';
-    console.log(id);
-    this.note.producto=producto;
-    console.log(producto);
-    this.note.cantidad=cantidad;
-    this.note.id=id;
-
-
-    console.log("ethel punto is  "+id);
-  
-  
-
+  constructor(public navCtrl: NavController, private plt: Platform, private file: File, private fileOpener: FileOpener,  public notesService : NotesService) {
+    this.notesService.getvent().subscribe(notas=> {
+      this.notes=notas;
   });
 
    
@@ -65,43 +51,53 @@ export class CortesPage {
     this.notesService.getEstadistica()
   }
 
+
   public goToDetail(id){
     console.log("este es el id " ,id)
    // this.obetenr(usuario);
 // this.navCtrl.push(RegistroPage, {id:id});
   }
- 
+
+  
   createPdf() {
+    for(let i in this.notes){
+
+      this.content.push(" ");
+
+
+      this.content.push("Producto:");
+
+
+      this.content.push({text: this.notes[i].producto});
+
+      this.content.push("Articulos vendidso:");
+
+      this.content.push({text: this.notes[i].count});
+      this.content.push("fecha:");
+
+      this.content.push({text: this.notes[i].fecha});
+      this.content.push("____________________________________________");
+
+    }
     var docDefinition = {
+
+
       content: [
-        { text: 'REMINDER', style: 'header' },
+        { text: 'Reporte de ventas', style: 'header' },
         { text: new Date().toTimeString(), alignment: 'right' },
  
-        { text: 'From', style: 'subheader' },
+        { text: 'MYPYME', style: 'subheader' },
         { text: this.letterObj.from },
  
-        { text: 'To', style: 'subheader' },
+        { text: 'Gerente', style: 'subheader' },
         this.letterObj.to,
 
-        { text: 'Producto', style: 'subheader' },
-        this.note.producto,
+        { text: 'Reporte de productos', style: 'subheader' },
+        this.content,
 
-        { text: 'Cantidad', style: 'subheader' },
-        this.note.cantidad,
-
-        { text: 'ID', style: 'subheader' },
-        this.note.id,
  
  
         { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
- 
-        {
-          ul: [
-            'Bacon',
-            'Rips',
-            'BBQ',
-          ]
-        }
       ],
       styles: {
         header: {

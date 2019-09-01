@@ -22,6 +22,15 @@ export class NotesService{
           
          // return this.notes;
       }
+ 
+      
+      public getvent(){
+        //console.log(this.afDB.list("productos/").valueChanges())
+        return this.afDB.list("estadistica/ventas/").valueChanges();
+      
+        
+       // return this.notes;
+    }
       public getNote(id){
          // return this.notes.filter(function(e, i){ return e.id == id })[0] || {id:null,title:null,descripcion:null};
          return this.afDB.object("productos/").valueChanges();
@@ -130,6 +139,29 @@ export class NotesService{
         
        // return this.notes;
     }
+
+    public compare(ID){
+        var query = firebase.database().ref('estadistica/ventas/').orderByChild ('ID').
+         equalTo (ID); query.once ('value', function (snapshot) {
+            if (snapshot.exists()){
+                const userData = snapshot.val();
+            console.log("exists!", userData);
+          }})
+   
+
+    }
+
+    public createVenta(note){
+        //this.notes.push(note);
+        this.afDB.database.ref('estadistica/ventas/' +note.id).set(note);
+    }
+
+    
+    cleanCart() {
+         this.cart=[0];
+      }
+
+
 
 
     
